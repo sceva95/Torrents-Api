@@ -17,11 +17,24 @@ const magnet_dl = require('./torrent/magnet_dl');
 const limeTorrent = require('./torrent/limeTorrent');
 const torrentFunk = require('./torrent/torrentFunk');
 const torrentProject = require('./torrent/torrentProject');
-
+const postMagnetLink = require('./transmission')
+const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use('/api/:website/:query/:page?', (req, res, next) => {
+var jsonParser = bodyParser.json()
+
+app.post('/api/magnet/', jsonParser, async (req, res) => {
+    const magnet = req.body.magnet
+
+    const response = await postMagnetLink(magnet)
+
+    console.log(response)
+
+    res.send(response)
+});
+
+app.get('/api/:website/:query/:page?', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let website = (req.params.website).toLowerCase();
@@ -29,11 +42,6 @@ app.use('/api/:website/:query/:page?', (req, res, next) => {
     let page = req.params.page;
     console.log({website : website ,query : query ,page :page});
     if (website === '1337x') {
-        if (page > 50) {
-            return res.json({
-                error: 'Please enter page  value less than 51 to get the result :)'
-            })
-        } else {
             scrap1337x.torrent1337x(query, page)
                 .then((data) => {
                     if (data === null) {
@@ -50,7 +58,6 @@ app.use('/api/:website/:query/:page?', (req, res, next) => {
                     }
 
                 })
-        }
     }
     if (website === 'yts') {
         scrapYts.yts(query, page)
@@ -366,9 +373,16 @@ app.use('/api/:website/:query/:page?', (req, res, next) => {
 
 });
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('<h1>Welcome to 1337x, NyaaSi, YTS, PirateBay, Torlock, EzTvio, TorrentGalaxy, Rarbg, Zooqle, KickAss, Bitsearch, Glodls, MagnetDL, Limetorrent, TorrentFunk, TorrentProject and Ettv Central Unoffical API</h1>');
 });
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+  
 const PORT = process.env.PORT || 8080;
 console.log('Listening on PORT : ', PORT);
 app.listen(PORT);

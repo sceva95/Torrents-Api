@@ -4,7 +4,7 @@ const axios = require('axios')
 async function pirateBay(query, page = '1') {
 
     const allTorrents = [];
-    const url = 'https://thehiddenbay.com/search/' + query + '/' + page + '/99/0';
+    const url = 'https://thepiratebays.com/search/' + query + '/' + page + '/99/0';
     let html;
     try {
         html = await axios.get(url);
