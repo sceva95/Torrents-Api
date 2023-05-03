@@ -4,12 +4,15 @@ const axios = require('axios')
 async function magnet_dl(query, page) {
     var ALLTORRENT = [];
     
-    if (page === '' || page === '1') {
-        var url = 'https://magnetdl.abcproxy.org/search/?q=' + query + '&m=1'
-    } else {
-        var url = 'https://magnetdl.proxyninja.org/search/?q=' + query + '&m=1'
-    }
+    // if (page === '' || page === '1') {
+    //     var url = 'https://magnetdl.abcproxy.org/search/?q=' + query + '&m=1'
+    // } else {
+    //     var url = 'https://magnetdl.proxyninja.org/search/?q=' + query + '&m=1'
+    // }
 
+    const url = 'https://magnetdl.abcproxy.org/' + query[0] + '/' + query.split(' ').join('-') + '/se/desc/' + page + '/'
+
+    console.log(url)
     let html;
     try {
         html = await axios.get(url, headers = {
@@ -34,6 +37,7 @@ async function magnet_dl(query, page) {
             'Leechers': $(element).find('td').eq(7).text(),
             'Url': "https://www.magnetdl.com" + $(element).find('td').eq(1).find('a').attr('href'),
             'Magnet': $(element).find('td').eq(0).find('a').attr('href'),
+            "Provider":"magnet_dl"
         }
         if (torrent.Name !== '') {
             ALLTORRENT.push(torrent);

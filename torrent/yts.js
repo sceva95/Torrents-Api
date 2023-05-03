@@ -58,6 +58,7 @@ async function yts(query, page = '1') {
         data['Language'] = $('div .tech-spec-info').find('div .row').eq(0).find('div .tech-spec-element').eq(2).text().trim();
         data['Url'] = url;
         data['Poster'] = $('div #movie-poster').eq(0).find('img').attr('src');
+        data['Provider'] = 'yts'
 
         $('.modal-download > div:nth-child(1) div.modal-content').each((i, el) => {
             $('div.modal-torrent').each((_, ele) => {

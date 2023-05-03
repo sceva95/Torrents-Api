@@ -31,7 +31,8 @@ async function limeTorrent(query, page = '1') {
                 "Seeders": $(element).find('td').eq(3).text().trim(),
                 "Leechers": $(element).find('td').eq(4).text().trim(),
                 "Torrent": $(element).find('div.tt-name a').attr('href'),
-                "Url": "https://www.limetorrents.pro" + $(element).find('div.tt-name a').next().attr('href')
+                "Url": "https://www.limetorrents.pro" + $(element).find('div.tt-name a').next().attr('href'),
+                "Provider":"limetorrent"
             }
             ALLTORRENT.push(torrent);
         }

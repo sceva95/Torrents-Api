@@ -35,7 +35,8 @@ async function torrentFunk(query, page=1) {
                 'Uploader': $(element).find('td').eq(5).text(),
                 'Seeders': $(element).find('td').eq(3).text(),
                 'Leechers': $(element).find('td').eq(4).text(),
-                'Url': url
+                'Url': url,
+                'Provider':"torrentfunk"
             }
             if (torrent.Name !== '') {
                 ALLTORRENT.push(torrent);

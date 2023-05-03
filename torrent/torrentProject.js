@@ -28,7 +28,8 @@ async function torrentProject(query, page = '0') {
                 'DateUploaded': $(element).find('span:nth-child(4)').text().trim(),
                 'Seeders': $(element).find('span:nth-child(2)').text().trim(),
                 'Leechers': $(element).find('span:nth-child(3)').text().trim(),
-                'Url': url
+                'Url': url,
+                'Provider':"torrentproject"
             }
             if (torrent.Name !== '') {
                 ALLTORRENT.push(torrent);

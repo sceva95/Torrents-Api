@@ -39,6 +39,7 @@ async function torrentGalaxy(query = '', page = '0') {
         data.DateUploaded = $(element).find(":nth-child(12)").text();
         data.Torrent = $(element).find(".tgxtablecell.collapsehide.rounded.txlight a").attr("href");
         data.Magnet = $(element).find(".tgxtablecell.collapsehide.rounded.txlight a").next().attr("href");
+        data.Provider = 'torrentgalaxy'
         allTorrents.push(data);
     })
     return allTorrents;

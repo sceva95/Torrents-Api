@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-
+//NEED VPN
 async function ezTV(query) {
     let allTorrents = [];
     const url = 'https://eztv.re/search/' + query;
@@ -27,7 +27,8 @@ async function ezTV(query) {
                 'Seeders': $(element).find('td').eq(5).text() || '',
                 'Url': "https://eztv.io" + url,
                 'Torrent': $(element).find('td').eq(2).find('a').eq(1).attr('href'),
-                'Magnet': $(element).find('td').eq(2).find('a').attr('href')
+                'Magnet': $(element).find('td').eq(2).find('a').attr('href'),
+                'Provider':"eztv"
             }
             allTorrents.push(torrent)
         }

@@ -2,6 +2,8 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const dev = require('request-promise');
 
+
+//PROBABLY DELETED
 async function ettvCentral(query, page = '0') {
     const ALLURLARRAY = [];
     var ALLTORRENT = [];
@@ -30,6 +32,7 @@ async function ettvCentral(query, page = '0') {
             data.Leechers = $(td).eq(6).text();
             data.UploadedBy = $(td).eq(7).text();
             data.Url = "https://www.ettvcentral.com" + $(td).eq(1).find('a').attr('href');
+            data.Provider= 'ettv'
             if (data.Name !== "") {
                 ALLURLARRAY.push(data.Url);
                 ALLTORRENT.push(data);

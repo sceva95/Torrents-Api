@@ -4,7 +4,7 @@ const axios = require('axios');
 
 async function nyaaSI(query, page = '1') {
     let torrents = [];
-    const url = 'https://nyaa.si/?f=0&c=0_0&q=' + query + '&p=' + page;
+    const url = 'https://nyaa.si/?f=0&c=0_0&q=' + query + '&s=seeders&o=desc&p=' + page;
     let html = null;
     try {
         html = await axios.get(url);
@@ -34,7 +34,8 @@ async function nyaaSI(query, page = '1') {
                 data.Leechers = $(td).eq(6).text();
                 data.Downloads = $(td).eq(7).text();
                 data.Torrent = 'https://nyaa.si' + $(element).find('.text-center a').attr('href');
-                data.Magnet = $(element).find('.text-center a').next().attr('href')
+                data.Magnet = $(element).find('.text-center a').next().attr('href');
+                data.Provider = 'nyaa'
             })
 
         });

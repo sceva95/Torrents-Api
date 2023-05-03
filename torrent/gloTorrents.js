@@ -19,8 +19,6 @@ async function glodls(query, page = '0') {
 
 
     $('.ttable_headinner tr').each((_, element) => {
-
-
         let torrent = {
             'Name': $(element).find('td').eq(1).find('a').text().trim(),
             'Size': $(element).find('td').eq(4).text(),
@@ -30,6 +28,7 @@ async function glodls(query, page = '0') {
             'Url': "https://glodls.to" + $(element).find('td').eq(1).find('a').next().attr('href'),
             'Torrent': "https://glodls.to" + $(element).find('td').eq(2).find('a').attr('href'),
             'Magnet': $(element).find('td').eq(3).find('a').attr('href'),
+            'Provider': 'glotorrent'
         }
         if (torrent.Name !== '') {
             ALLTORRENT.push(torrent);

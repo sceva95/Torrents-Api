@@ -26,7 +26,8 @@ async function torLock(query = '', page = '1') {
                 'DateUploaded': $(element).find('td').eq(1).text().trim(),
                 'Seeders': $(element).find('td').eq(3).text().trim(),
                 'Leechers': $(element).find('td').eq(4).text().trim(),
-                'Url': url
+                'Url': url,
+                'Provider':"torlock"
             }
             if (torrent.Name !== '') {
                 ALLTORRENT.push(torrent);

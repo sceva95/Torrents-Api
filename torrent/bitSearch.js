@@ -1,6 +1,7 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
 
+
 async function bitSearch(query, page = "1") {
   var ALLTORRENT = [];
   const url =
@@ -24,20 +25,21 @@ async function bitSearch(query, page = "1") {
 
   const $ = cheerio.load(html.data);
 
-  $("li.search-result.view-box").each((_, element) => {
-    let size = $(element).find(".info div div").eq(2).text();
+  $("li.search-result").each((_, element) => {
+    let size = $(element).find(".info div div div").eq(2).text();
     if (size) {
       let torrent = {
         Name: $(element).find(".info h5 a").text().trim(),
-        Size: $(element).find(".info div div").eq(2).text().trim(),
-        Downloads: $(element).find(".info div div").eq(1).text().trim(),
-        Seeders: $(element).find(".info div div").eq(3).text().trim(),
-        Leechers: $(element).find(".info div div").eq(4).text().trim(),
-        DateUploaded: $(element).find(".info div div").eq(5).text().trim(),
+        Size: $(element).find(".info div div").eq(3).text().trim(),
+        Downloads: $(element).find(".info div div").eq(2).text().trim(),
+        Seeders: $(element).find(".info div div").eq(4).text().trim(),
+        Leechers: $(element).find(".info div div").eq(5).text().trim(),
+        DateUploaded: $(element).find(".info div div").eq(6).text().trim(),
         Url:
           "https://bitsearch.to" + $(element).find(".info h5 a").attr("href"),
         TorrentLink: $(element).find(".links a").attr("href"),
         Magnet: $(element).find(".links a").next().attr("href"),
+        Provider: 'bitsearch'
       };
       ALLTORRENT.push(torrent);
     }

@@ -30,7 +30,8 @@ async function zooqle(query = '', page = '1') {
             'Seeders': seeders,
             'Leechers': leechers,
             'Url': "https://zooqle.com" + $(element).find('td').eq(1).find('a').attr('href'),
-            'Magnet': $(element).find('td').eq(2).find('ul').find('li').eq(1).find('a').attr('href')
+            'Magnet': $(element).find('td').eq(2).find('ul').find('li').eq(1).find('a').attr('href'),
+            'Provider':"zooqle"
         }
         ALLTORRENT.push(torrent);
     })

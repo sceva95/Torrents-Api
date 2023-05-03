@@ -3,11 +3,13 @@ const axios = require('axios');
 
 
 
+
 async function torrent1337x(query = '', page = '1') {
 
     const allTorrent = [];
     let html;
     const url = 'https://1337xx.to/search/' + query + '/' + page + '/';
+    // const url = 'https://1337xx.to/sort-search/' + query + '/seeders/desc/' + page + '/';
     try{
         html = await axios.get(url);
     }catch{
@@ -33,9 +35,12 @@ async function torrent1337x(query = '', page = '1') {
         }catch{
             return null;
         }
+
         const $ = cheerio.load(html.data);
         data.Name = $('.box-info-heading h1').text().trim();
-        data.Magnet = $('.clearfix ul li a').attr('href') || "";
+        data.Magnet = $('div .clearfix ul .dropdown ul').children('li').last().children('a').attr('href')
+
+        data.Provider = '1337x'
         const poster = $('div.torrent-image img').attr('src');
         
         if (typeof poster !== 'undefined') {
@@ -53,12 +58,14 @@ async function torrent1337x(query = '', page = '1') {
             $list = $(element);
             data[labels[i]] = $list.text();
         })
-        data.Url = element
 
-        allTorrent.push(data)
+        data.Url = element
+        if (!data.Name.includes('1337x Domains')) {
+            allTorrent.push(data)
+        }
     }))
 
-    return allTorrent
+    return allTorrent.sort((a, b) => b.Seeders - a.Seeders)
 }
 module.exports = {
     torrent1337x: torrent1337x
