@@ -23,96 +23,112 @@ async function combo(query, page) {
 
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for 1337x')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(scrap1337x.torrent1337x(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for yts')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(scrapYts.yts('query', 1)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for limetorrent')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(limeTorrent(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for torrentGalaxy')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(torrentGalaxy(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for rarbg')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(rarbg(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for zooqle')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(zooqle.zooqle(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for kickass')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(kickAss(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for torlock')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(scrapTorLock.torLock(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for nyaasi')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(scrapNyaa.nyaaSI(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for bitsearch')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(bitSearch(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for eztv')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(scrapEzTVio.ezTV(query)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for thepiratebay')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(scrapPirateBay.pirateBay(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for magnetdl')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(magnet_dl(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for torrentfunk')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(torrentFunk(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for glodis')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(glodls(query, page)))
         ]),
         Promise.race([new Promise((_, reject) => (
             setTimeout(() => {
+                logger.warn('Timeout for torrentproject')
                 reject({code: 408, message: 'Timeout exceeded'})
             }, timeout))),
             new Promise((resolve, _) => resolve(torrentProject(query, page)))
