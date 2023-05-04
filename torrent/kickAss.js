@@ -31,7 +31,7 @@ async function kickAss(query, page = '1') {
                     "Seeders": $(element).find('td').eq(4).text().trim(),
                     "Leechers": $(element).find('td').eq(5).text().trim(),
                     "Url": url,
-                    "Provider": "kiskass"
+                    "Provider": "kickass"
                 }
                 ALLTORRENT.push(torrent);
             }
