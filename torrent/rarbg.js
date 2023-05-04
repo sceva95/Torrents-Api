@@ -24,16 +24,15 @@ async function rarbg(query, page = '1') {
             const data = {};
             const td = $(el).children('td');
             data.Name = $(td).eq(1).find('a').attr('title');
-            data.Category = $(td).eq(2).find('a').text();
-            data.DateUploaded = $(td).eq(3).text();
-            data.Size = $(td).eq(4).text();
-            data.Seeders = $(td).eq(5).find('font').text();
-            data.Leechers = $(td).eq(6).text();
-            data.UploadedBy = $(td).eq(7).text();
-            data.Url = "https://rargb.to" + $(td).eq(1).find('a').attr('href');
+            data.DateUploaded = $(td).eq(2).text();
+            data.Size = $(td).eq(3).text();
+            data.Seeders = $(td).eq(4).text();
+            data.Leechers = $(td).eq(5).text();
+            data.UploadedBy = $(td).eq(8).text();
+            data.Url = "https://www.proxyrarbg.org" + $(td).eq(1).find('a').attr('href');
+            data.Provider = 'rarbg'
             ALLURLARRAY.push(data.Url);
             ALLTORRENT.push(data);
-
         })
     });
 
@@ -62,6 +61,6 @@ async function rarbg(query, page = '1') {
         }
 
     }))
-    return ALLTORRENT;
+    return ALLTORRENT.sort((a, b) => b.Seeders - a.Seeders);
 }
 module.exports = rarbg;
