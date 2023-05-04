@@ -1,8 +1,12 @@
 const cheerio = require("cheerio");
+const logger = require('pino')()
+
 const axios = require("axios");
 
 
 async function bitSearch(query, page = "1") {
+  logger.info(`Query to bitSearch`)
+
   var ALLTORRENT = [];
   const url =
     "https://bitsearch.to/search?q=" +
@@ -69,6 +73,8 @@ async function bitSearch(query, page = "1") {
       ALLTORRENT.push(torrent);
     }
   });
+
+  logger.info(`Find on bitSearch ${ALLTORRENT.length} torrents`)
 
   return ALLTORRENT;
 }

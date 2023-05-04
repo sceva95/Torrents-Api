@@ -1,3 +1,5 @@
+const logger = require('pino')()
+
 const scrap1337x = require('./1337x');
 const scrapNyaa = require('./nyaaSI');
 const scrapYts = require('./yts');
@@ -16,7 +18,7 @@ const torrentFunk = require('./torrentFunk');
 const torrentProject = require('./torrentProject');
 
 async function combo(query, page) {
-    let comboTorrent = [], timeout = 10000 //wait time before rejecting promised results
+    let comboTorrent = [], timeout = 50000 //wait time before rejecting promised results
     await Promise.allSettled([
 
         Promise.race([new Promise((_, reject) => (

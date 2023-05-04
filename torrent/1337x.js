@@ -1,10 +1,13 @@
 const cheerio = require('cheerio');
+const logger = require('pino')()
+
 const axios = require('axios');
 
 
 
 
 async function torrent1337x(query = '', page = '1') {
+    logger.info(`Query to 1337x`)
 
     const allTorrent = [];
     let html;
@@ -62,6 +65,8 @@ async function torrent1337x(query = '', page = '1') {
             allTorrent.push(data)
         }
     }))
+
+    logger.info(`Find on 1337x ${allTorrent.length} torrents`)
 
     return allTorrent.sort((a, b) => b.Seeders - a.Seeders)
 }

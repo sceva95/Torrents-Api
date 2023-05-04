@@ -1,4 +1,5 @@
 const express = require('express');
+const logger = require('pino')()
 const scrap1337x = require('./torrent/1337x');
 const scrapNyaa = require('./torrent/nyaaSI');
 const scrapYts = require('./torrent/yts');
@@ -29,7 +30,7 @@ app.post('/api/magnet/', jsonParser, async (req, res) => {
 
     const response = await postMagnetLink(magnet)
 
-    console.log(response)
+    logger.info(`Sended to magnet: ${response}`)
 
     res.send(response)
 });
@@ -40,7 +41,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
     let website = (req.params.website).toLowerCase();
     let query = req.params.query;
     let page = req.params.page;
-    console.log({website : website ,query : query ,page :page});
+    logger.info(`Websitet: ${website}, Query: ${query}, Page: ${page}`)
     if (website === '1337x') {
             scrap1337x.torrent1337x(query, page)
                 .then((data) => {
@@ -384,5 +385,6 @@ app.use(function(req, res, next) {
 });
   
 const PORT = process.env.PORT || 8080;
-console.log('Listening on PORT : ', PORT);
+logger.info(`Listening on PORT: ${PORT}`)
+
 app.listen(PORT);

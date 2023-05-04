@@ -1,10 +1,13 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
+const logger = require('pino')()
 const dev = require('request-promise');
 
 
 //PROBABLY DELETED
 async function ettvCentral(query, page = '0') {
+    logger.info(`Query to eztv`)
+
     const ALLURLARRAY = [];
     var ALLTORRENT = [];
     const url = "https://www.ettvcentral.com/torrents-search.php?search= " + query + "&page=" + page;
@@ -64,6 +67,8 @@ async function ettvCentral(query, page = '0') {
             }
         }
     }))
+
+    logger.info(`Find on ettv ${ALLTORRENT.length} torrents`)
 
     return ALLTORRENT;
 }
