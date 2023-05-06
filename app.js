@@ -46,7 +46,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             scrap1337x.torrent1337x(query, page)
                 .then((data) => {
                     if (data === null) {
-                        return res.json({
+                        return res.status(400).json({
                             error: 'Website is blocked change IP'
                         })
 
@@ -64,7 +64,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         scrapYts.yts(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -82,7 +82,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         scrapEzTVio.ezTV(query)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -100,7 +100,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         scrapTorLock.torLock(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -118,7 +118,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         scrapPirateBay.pirateBay(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -136,7 +136,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         torrentGalaxy(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -155,7 +155,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         rarbg(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -175,7 +175,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         zooqle.zooqle(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -193,7 +193,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         kickAss(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -212,7 +212,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         bitSearch(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -229,7 +229,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         glodls(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -246,7 +246,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         magnet_dl(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -263,7 +263,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         limeTorrent(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -280,7 +280,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         torrentFunk(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -297,7 +297,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         torrentProject(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -340,7 +340,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
         ettvCentral(query, page)
             .then((data) => {
                 if (data === null) {
-                    return res.json({
+                    return  res.status(400).json({
                         error: 'Website is blocked change IP'
                     })
 
