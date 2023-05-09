@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
-
+const logger = require('pino')()
 
 async function nyaaSI(query, page = '1') {
     let torrents = [];
@@ -42,6 +42,7 @@ async function nyaaSI(query, page = '1') {
         torrents.push(data);
 
     });
+    logger.info(`Find on nyaasi ${torrents.length} torrents`)
 
     return torrents
 }

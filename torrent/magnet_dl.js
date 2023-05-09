@@ -1,5 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const logger = require('pino')()
 
 async function magnet_dl(query, page) {
     var ALLTORRENT = [];
@@ -36,6 +37,9 @@ async function magnet_dl(query, page) {
             ALLTORRENT.push(torrent);
         }
     })
+
+    logger.info(`Find on magnetdl ${ALLTORRENT.length} torrents`)
+
     return ALLTORRENT;
 }
 

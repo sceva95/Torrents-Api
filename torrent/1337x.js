@@ -4,11 +4,7 @@ const logger = require('pino')()
 const axios = require('axios');
 
 
-
-
 async function torrent1337x(query = '', page = '1') {
-    logger.info(`Query to 1337x`)
-
     const allTorrent = [];
     let html;
     const url = 'https://1337xx.to/search/' + query + '/' + page + '/';

@@ -1,6 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
-
+const logger = require('pino')()
 
 async function zooqle(query = '', page = '1') {
     var ALLTORRENT = [];
@@ -35,6 +35,8 @@ async function zooqle(query = '', page = '1') {
         }
         ALLTORRENT.push(torrent);
     })
+    logger.info(`Find on zooqle ${ALLTORRENT.length} torrents`)
+
     return ALLTORRENT;
 }
 

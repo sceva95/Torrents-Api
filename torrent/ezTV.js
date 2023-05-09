@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
+const logger = require('pino')()
 
 //NEED VPN
 async function ezTV(query) {
@@ -33,6 +34,7 @@ async function ezTV(query) {
             allTorrents.push(torrent)
         }
     })
+    logger.info(`Find on eztv ${allTorrents.length} torrents`)
 
     return allTorrents
 }

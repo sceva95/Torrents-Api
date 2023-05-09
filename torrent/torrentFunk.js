@@ -1,5 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const logger = require('pino')()
 
 async function torrentFunk(query, page=1) {
     var ALLTORRENT = [];
@@ -62,6 +63,7 @@ async function torrentFunk(query, page=1) {
         }
 
     }))
+    logger.info(`Find on torrentfunk ${ALLTORRENT.length} torrents`)
 
     return ALLTORRENT;
 }

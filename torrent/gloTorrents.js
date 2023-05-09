@@ -1,5 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const logger = require('pino')()
 
 
 async function glodls(query, page = '0') {
@@ -34,6 +35,8 @@ async function glodls(query, page = '0') {
             ALLTORRENT.push(torrent);
         }
     })
+    logger.info(`Find on glotorrents ${ALLTORRENT.length} torrents`)
+
     return ALLTORRENT;
 }
 module.exports = glodls

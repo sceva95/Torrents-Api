@@ -1,5 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const logger = require('pino')()
 
 
 async function kickAss(query, page = '1') {
@@ -56,6 +57,8 @@ async function kickAss(query, page = '1') {
             }
         }
     }))
+    logger.info(`Find on kickass ${ALLTORRENT.length} torrents`)
+
     return ALLTORRENT;
 }
 module.exports = kickAss;

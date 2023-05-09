@@ -1,5 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
+const logger = require('pino')()
 
 async function pirateBay(query, page = '1') {
 
@@ -36,7 +37,7 @@ async function pirateBay(query, page = '1') {
             allTorrents.push(torrent)
         }
     })
-
+    logger.info(`Find on piratebay ${allTorrents.length} torrents`)
     return allTorrents
 }
 

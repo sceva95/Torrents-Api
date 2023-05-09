@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
+const logger = require('pino')()
 
 async function torrentGalaxy(query = '', page = '0') {
 
@@ -42,6 +43,9 @@ async function torrentGalaxy(query = '', page = '0') {
         data.Provider = 'torrentgalaxy'
         allTorrents.push(data);
     })
+
+    logger.info(`Find on torrentgalaxy ${allTorrents.length} torrents`)
+
     return allTorrents;
 }
 module.exports = torrentGalaxy

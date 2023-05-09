@@ -1,6 +1,6 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
-
+const logger = require('pino')()
 
 async function rarbg(query, page = '1') {
     const ALLURLARRAY = [];
@@ -61,6 +61,8 @@ async function rarbg(query, page = '1') {
         }
 
     }))
+    logger.info(`Find on rarbg ${ALLTORRENT.length} torrents`)
+
     return ALLTORRENT.sort((a, b) => b.Seeders - a.Seeders);
 }
 module.exports = rarbg;
