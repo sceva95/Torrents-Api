@@ -309,7 +309,8 @@ app.get('/api/:website/:query/:page?', (req, res) => {
     }
     if (website === 'torrentproject') {
         torrentProject(query, page)
-            .then((data) => {
+        .then((data) => {
+                logger.info(`Data ${data}`)
                 if (data === null) {
                     logger.warn('torrentproject is blocked change IP')
                     return res.status(502).json({
