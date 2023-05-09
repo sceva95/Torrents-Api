@@ -47,7 +47,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('1337x is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -66,7 +66,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('yts is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -85,7 +85,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('eztv is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -104,7 +104,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('torlock is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -123,7 +123,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('piratebay is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -142,7 +142,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('tgx is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -162,7 +162,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('rarbg is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -183,7 +183,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('zooqle is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -202,7 +202,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('kickass is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -222,7 +222,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('bitsearch is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -240,7 +240,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('glodls is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -258,7 +258,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('magnetdl is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -276,7 +276,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('limetorrent is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -294,7 +294,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('torrentfunk is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -313,7 +313,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
                 logger.info(`Data ${data}`)
                 if (data === null) {
                     logger.warn('torrentproject is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
 
@@ -358,7 +358,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
             .then((data) => {
                 if (data === null) {
                     logger.warn('yts is blocked change IP')
-                    return res.status(502).json({
+                    return res.status(500).json({
                         error: 'Website is blocked change IP'
                     })
                 } else if (data.length === 0) {
