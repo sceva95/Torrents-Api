@@ -25,8 +25,10 @@ const app = express();
 
 var jsonParser = bodyParser.json()
 
-app.post('/api/magnet/', jsonParser, async (req, res) => {
+app.post('/magnet/', jsonParser, async (req, res) => {
     const magnet = req.body.magnet
+
+    logger.info(`Received magnet: ${magnet}`)
 
     const response = await postMagnetLink(magnet)
 
@@ -337,7 +339,7 @@ app.get('/api/:website/:query/:page?', (req, res) => {
                 .then((data) => {
                     if (data === null) {
                         logger.warn('yts is blocked change IP')
-                        return res.json({
+                        return res.status(500).json({
                             error: 'Website is blocked change IP'
                         })
 
