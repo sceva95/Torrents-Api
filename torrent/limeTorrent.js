@@ -18,26 +18,26 @@ async function limeTorrent(query, page = '1') {
 
     const $ = cheerio.load(html.data);
 
-    $('.table2 tbody tr').each((i, element) => {
-        if (i > 0) {
-            let category_and_age = $(element).find('td').eq(1).text().trim();
-            category_and_age = category_and_age.split('-');
-            let age = category_and_age[0].trim();
-            let category = category_and_age[1].replace('in', '').trim();
-            let torrent = {
-                "Name": $(element).find('div.tt-name').text().trim(),
-                "Size": $(element).find('td').eq(2).text().trim(),
-                "Category": category,
-                "Age": age,
-                "Seeders": $(element).find('td').eq(3).text().trim(),
-                "Leechers": $(element).find('td').eq(4).text().trim(),
-                "Torrent": $(element).find('div.tt-name a').attr('href'),
-                "Url": baseUrl + $(element).find('div.tt-name a').next().attr('href'),
-                "Provider":"limetorrent"
-            }
-            ALLTORRENT.push(torrent);
-        }
-    })
+    // $('.table2 tbody tr').each((i, element) => {
+    //     if (i > 0) {
+    //         let category_and_age = $(element).find('td').eq(1).text().trim();
+    //         category_and_age = category_and_age.split('-');
+    //         let age = category_and_age[0].trim();
+    //         let category = category_and_age[1].replace('in', '').trim();
+    //         let torrent = {
+    //             "Name": $(element).find('div.tt-name').text().trim(),
+    //             "Size": $(element).find('td').eq(2).text().trim(),
+    //             "Category": category,
+    //             "Age": age,
+    //             "Seeders": $(element).find('td').eq(3).text().trim(),
+    //             "Leechers": $(element).find('td').eq(4).text().trim(),
+    //             "Torrent": $(element).find('div.tt-name a').attr('href'),
+    //             "Url": baseUrl + $(element).find('div.tt-name a').next().attr('href'),
+    //             "Provider":"limetorrent"
+    //         }
+    //         ALLTORRENT.push(torrent);
+    //     }
+    // })
 
     await $('.table2 tbody tr').each(async (i, element) => {
         if (i > 0) {
@@ -66,12 +66,13 @@ async function limeTorrent(query, page = '1') {
                 logger.info(`Limetorrent: Error getting link for ${query}`)
             }
 
-                const $$ = cheerio.load(html.data);
+            const $$ = cheerio.load(html.data);
 
-                $$('.torrentinfo .downloadarea').map((_, element) => {
-                    const el = $(element).find('a').attr('href')
-                    torrent.Magnet = el
-                })
+            $$('.torrentinfo .downloadarea').map((_, element) => {
+                const el = $(element).find('a').attr('href')
+                console.log('EMagnet link', el)
+                torrent.Magnet = el.includes('magnet') ? el : undefined
+            })
             ALLTORRENT.push(torrent);
         }
 
