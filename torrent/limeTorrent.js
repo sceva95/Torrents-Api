@@ -16,7 +16,7 @@ async function limeTorrent(query, page = '1') {
         return null;
     }
 
-    const $ = cheerio.load(datatoanalize);
+    const $ = cheerio.load(html.data);
 
     $('.table2 tbody tr').each(async (i, element) => {
         if (i > 0) {
