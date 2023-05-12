@@ -6,8 +6,9 @@ const axios = require('axios');
 
 async function torrent1337x(query = '', page = '1') {
     const allTorrent = [];
+    const baseUrl = 'https://1337xx.to'
     let html;
-    const url = 'https://1337xx.to/search/' + query + '/' + page + '/';
+    const url = baseUrl + '/search/' + query + '/' + page + '/';
     try{
         html = await axios.get(url);
     }catch{
@@ -17,7 +18,7 @@ async function torrent1337x(query = '', page = '1') {
     const $ = cheerio.load(html.data)
 
     const links = $('td.name').map((_, element) => {
-        var link = 'https://1337xx.to' + $(element).find('a').next().attr('href');
+        var link = baseUrl + $(element).find('a').next().attr('href');
         return link;
     }).get();
 
