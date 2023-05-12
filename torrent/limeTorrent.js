@@ -19,7 +19,8 @@ async function limeTorrent(query, page = '1') {
     const $ = cheerio.load(html.data);
 
     const links =  $('.table2 tbody tr').map((_, element) => {
-        var link = baseUrl + $(element).find('div.tt-name').attr('href');
+        var link = baseUrl + $(element).find('div.tt-name a:nth-child(2)').attr('href');
+        console.log('Link', link)
         return link;
     }).get();
 
