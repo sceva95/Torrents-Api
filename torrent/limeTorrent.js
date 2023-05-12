@@ -4,7 +4,8 @@ const logger = require('pino')()
 
 async function limeTorrent(query, page = '1') {
     var ALLTORRENT = [];
-    const url = `https://www.limetorrents.pro/search/all/${query}/seeds/${page}/`;
+    const baseUrl = 'https://www.limetorrents.pro'
+    const url = `${baseUrl}/search/all/${query}/seeds/${page}/`;
     let html;
     try {
         html = await axios.get(url, headers = {
@@ -31,7 +32,7 @@ async function limeTorrent(query, page = '1') {
                 "Seeders": $(element).find('td').eq(3).text().trim(),
                 "Leechers": $(element).find('td').eq(4).text().trim(),
                 "Torrent": $(element).find('div.tt-name a').attr('href'),
-                "Url": "https://www.limetorrents.pro" + $(element).find('div.tt-name a').next().attr('href'),
+                "Url": baseUrl + $(element).find('div.tt-name a').next().attr('href'),
                 "Provider":"limetorrent"
             }
             ALLTORRENT.push(torrent);
@@ -60,7 +61,7 @@ async function limeTorrent(query, page = '1') {
             console.log(link)
             let html;
             try{
-                html = await axios.get(link);
+                html = await axios.get(baseUrl + link);
             }catch{
                 logger.info(`Limetorrent: Error getting link for ${query}`)
             }
