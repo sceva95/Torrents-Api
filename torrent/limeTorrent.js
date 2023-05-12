@@ -20,11 +20,8 @@ async function limeTorrent(query, page = '1') {
 
     const links =  $('.table2 tbody tr').map((_, element) => {
         var link = baseUrl + $(element).find('div.tt-name a:nth-child(2)').attr('href');
-        console.log('Link', link)
         return link;
     }).get();
-
-    console.log(links)
 
     await Promise.all(links.map(async (element) => {
         const data = {};
@@ -38,7 +35,7 @@ async function limeTorrent(query, page = '1') {
         const $ = cheerio.load(html.data);
 
         data.Name = $('#maincontentrouter #content h1').text()
-        data.Magnet = $('.torrentinfo .downloadarea').next().next()('.dltorrent a').attr('href')
+        data.Magnet = $('.torrentinfo .downloadarea:nth-child(2) .dltorrent a').attr('href')
         console.log(data)
     }))
 
