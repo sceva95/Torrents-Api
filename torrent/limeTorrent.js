@@ -70,10 +70,8 @@ async function limeTorrent(query, page = '1') {
                         torrent.Magnet = el
                 })
             } catch {
-                logger.info(`Limetorrent: Error getting link for ${query}`)
+                logger.warn(`Limetorrent: Error getting link for ${query}`)
             }
-
-
 
             logger.info(`Limetorrent: Push!`)
             ALLTORRENT.push(torrent);
