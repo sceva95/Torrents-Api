@@ -38,14 +38,12 @@ async function limeTorrent(query, page = '1') {
             const link = $(element).find('div.tt-name a:nth-child(2)').attr('href');
 
             console.log(link)
-
-            await Promise(async () => {
-                let html;
-                try{
-                    html = await axios.get(link);
-                }catch{
-                    return null;
-                }
+            let html;
+            try{
+                html = await axios.get(link);
+            }catch{
+                logget.info(`Limetorrent: Error getting link for ${query}`)
+            }
 
                 const $ = cheerio.load(html.data);
 
@@ -53,7 +51,6 @@ async function limeTorrent(query, page = '1') {
                     const el = $(element).find('a').attr('href')
                     torrent.Magnet = el
                 })
-            })
             ALLTORRENT.push(torrent);
         }
 
