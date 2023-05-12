@@ -69,8 +69,8 @@ async function limeTorrent(query, page = '1') {
 
             await $$('.torrentinfo .downloadarea').map((_, element) => {
                 const el = $(element).find('a').attr('href')
-                console.log('EMagnet link', el)
-                torrent.Magnet = el.includes('magnet') ? el : undefined
+                if(el.includes('magnet'))
+                torrent.Magnet = el
             })
 
             logger.info(`Limetorrent: Push!`)
