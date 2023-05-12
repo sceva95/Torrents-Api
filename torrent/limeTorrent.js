@@ -4,7 +4,8 @@ const logger = require('pino')()
 
 async function limeTorrent(query, page = '1') {
     var ALLTORRENT = [];
-    const url = `https://www.limetorrents.pro/search/all/${query}/seeds/${page}/`;
+    const baseUrl = 'https://www.limetorrents.pro'
+    const url = `${baseUrl}/search/all/${query}/seeds/${page}/`;
     let html;
     try {
         html = await axios.get(url, headers = {
