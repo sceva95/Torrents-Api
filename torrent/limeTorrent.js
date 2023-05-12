@@ -54,24 +54,26 @@ async function limeTorrent(query, page = '1') {
                 "Leechers": $(element).find('td').eq(4).text().trim(),
                 "Torrent": $(element).find('div.tt-name a').attr('href'),
                 "Url": "https://www.limetorrents.pro" + $(element).find('div.tt-name a').next().attr('href'),
-                "Provider":"limetorrent"
+                "Provider": "limetorrent"
             }
             const link = $(element).find('div.tt-name a:nth-child(2)').attr('href');
 
             let html;
-            try{
+            try {
                 html = await axios.get(baseUrl + link);
-            }catch{
+
+                const $$ = cheerio.load(html?.data);
+
+                await $$('.torrentinfo .downloadarea').map((_, element) => {
+                    const el = $(element).find('a').attr('href')
+                    if (el.includes('magnet'))
+                        torrent.Magnet = el
+                })
+            } catch {
                 logger.info(`Limetorrent: Error getting link for ${query}`)
             }
 
-            const $$ = cheerio.load(html.data);
 
-            await $$('.torrentinfo .downloadarea').map((_, element) => {
-                const el = $(element).find('a').attr('href')
-                if(el.includes('magnet'))
-                torrent.Magnet = el
-            })
 
             logger.info(`Limetorrent: Push!`)
             ALLTORRENT.push(torrent);
