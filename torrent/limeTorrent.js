@@ -65,9 +65,9 @@ async function limeTorrent(query, page = '1') {
                 logger.info(`Limetorrent: Error getting link for ${query}`)
             }
 
-                const $ = cheerio.load(html.data);
+                const $$ = cheerio.load(html.data);
 
-                $('.torrentinfo .downloadarea').map((_, element) => {
+                $$('.torrentinfo .downloadarea').map((_, element) => {
                     const el = $(element).find('a').attr('href')
                     torrent.Magnet = el
                 })
