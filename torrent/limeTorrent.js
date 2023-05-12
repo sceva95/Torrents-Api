@@ -35,7 +35,7 @@ async function limeTorrent(query, page = '1') {
         const $ = cheerio.load(html.data);
 
         data.Name = $('#maincontentrouter #content h1').text()
-        data.Magnet = $('.torrentinfo .downloadarea:nth-child(2) .dltorrent a').attr('href')
+        data.Magnet = $('.torrentinfo .div:nth-child(4) .dltorrent a').attr('href')
         console.log(data)
     }))
 
