@@ -58,7 +58,6 @@ async function limeTorrent(query, page = '1') {
             }
             const link = $(element).find('div.tt-name a:nth-child(2)').attr('href');
 
-            console.log(link)
             let html;
             try{
                 html = await axios.get(baseUrl + link);
@@ -68,11 +67,13 @@ async function limeTorrent(query, page = '1') {
 
             const $$ = cheerio.load(html.data);
 
-            $$('.torrentinfo .downloadarea').map((_, element) => {
+            await $$('.torrentinfo .downloadarea').map((_, element) => {
                 const el = $(element).find('a').attr('href')
                 console.log('EMagnet link', el)
                 torrent.Magnet = el.includes('magnet') ? el : undefined
             })
+
+            logger.info(`Limetorrent: Push!`)
             ALLTORRENT.push(torrent);
         }
 
